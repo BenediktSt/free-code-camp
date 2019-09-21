@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Survey Form</title>
+    <link rel="stylesheet" type="text/css" href="./styles.css">
+</head>
+<body>
+<script src="https://cdn.freecodecamp.org/testable-projects-fcc/v1/bundle.js"></script>
+<main>
+    <div class="centered">
+        <h1 id="title"> Want to get in touch? </h1>
+        <p id="description">Just leave a message here</p>
+    </div>
+    <form id="survey-form">
+        <div class="container">
+            <label for="name" id="name-label" class="align-right">Name*</label>
+            <input name="name" id="name" type="text" required placeholder="Please insert your Name">
+        </div>
+        <div class="container">
+            <label for="email" id="email-label" class="align-right">Email*</label>
+            <input name="email" id="email" type="email" required placeholder="Please insert your Email-Address">
+        </div>
+        <div class="container">
+            <label for="number" id="number-label" class="align-right">Age*</label>
+            <input name="age" id="number" type="number" required min="1" max="200" placeholder="Please insert your age">
+        </div>
+        <div class="container">
+            <label for="dropdown" class="align-right">How did you find me?</label>
+            <select id="dropdown">
+                <option>Working together</option>
+                <option>Recruiting search</option>
+                <option>Social media</option>
+                <option>Other</option>
+            </select>
+        </div>
+        <div class="container">
+            <span class="align-right">Would you like to be contacted?</span>
+            <div>
+                <input type="radio" id="contact-yes" name="contact" value="yes">
+                <label for="contact-yes">Yes</label>
+                <input type="radio" id="contact-no" name="contact" value="no">
+                <label for="contact-no">No</label>
+            </div>
+        </div>
+        <div class="container">
+            <p class="align-right">What would you like to talk about?</p>
+            <div>
+                <input id="topic-business" type="checkbox" value="business">
+                <label for="topic-business">Business</label><br>
+                <input id="topic-private" type="checkbox" value="private">
+                <label for="topic-private">Private</label><br>
+                <input id="topic-connect" type="checkbox" value="connected">
+                <label for="topic-connect">Just Stay Connected</label>
+            </div>
+        </div>
+        <div class="container">
+            <label for="textarea" class="align-right">Your personal message</label>
+            <textarea id="textarea"></textarea>
+        </div>
+        <div class="centered">
+            <input type="submit" id="submit" value="Send" class="button">
+        </div>
+    </form>
+</main>
+</body>
+</html>
