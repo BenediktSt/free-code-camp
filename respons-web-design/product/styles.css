@@ -1,0 +1,52 @@
+html,body {
+    font-family: Verdana, sans-serif;
+    background-color: cornflowerblue;
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    position: fixed;
+    width: 100%;
+    background-color: cornflowerblue;
+    top: 0;
+    left: 0;
+    font-size: 1.2rem;
+    color: white;
+}
+main {
+    margin: 50px auto auto auto;
+    width: 50%;
+}
+
+.flex-container {
+    display: flex;
+    align-items: center;
+    margin: 10px 0;
+}
+
+#header-img {
+    height: 40px;
+    width: auto;
+    padding: 0 50px;
+}
+
+#video {
+    max-width: 500px;
+}
+
+.icon {
+    height: 100px;
+    margin-right: 20px;
+}
+@media screen and (max-width: 600px) {
+    .icon {
+        height: 40px;
+        margin-right: 5px;
+    }
+}
+
+section {
+    margin: 40px 0;
+}

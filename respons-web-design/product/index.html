@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Product Landing Page</title>
+    <link rel="stylesheet" href="./styles.css">
+</head>
+<body>
+<script src="https://cdn.freecodecamp.org/testable-projects-fcc/v1/bundle.js"></script>
+<div id="page-wrapper">
+    <header id="header">
+        <div>
+            <img src="./res/website.svg" alt="Product Logo" id="header-img">
+            <span class="title">Awesome Website Design</span>
+        </div>
+        <nav id="nav-bar">
+            <a href="#about-us" class="nav-link">About us</a>
+            <a href="#action" class="nav-link">See us in Action</a>
+            <a href="#pricing" class="nav-link">Pricing</a>
+            <a href="#subscribe" class="nav-link">Subscribe</a>
+        </nav>
+    </header>
+    <main id="content">
+        <section id="about-us">
+            <h1> About us </h1>
+            <div>
+                <div class="flex-container">
+                    <img class="icon" src="./res/team.svg" alt="Team Logo" id="team-img">
+                    <span>
+                        We have an excellent team of experts, ready to take on your challenge.
+                    </span>
+                </div>
+                <div class="flex-container">
+                    <img class="icon" src="./res/maps-and-flags.svg" alt="Local Logo" id="local-img">
+                    <span>
+                        Our consultants and team members will work at your site to give you the best possible support.
+                    </span>
+                </div>
+                <div class="flex-container">
+                    <img class="icon" src="./res/global.svg" alt="Global Logo" id="global-img">
+                    <span>
+                        We are connected in a big global network to exchange experiences and discuss modern topics
+                    </span>
+                </div>
+            </div>
+        </section>
+        <section id="action">
+            <h1> See us in Action </h1>
+            <p> We have a view of the most skilled computer scientists on the planet</p>
+            <video controls id="video">
+                <source src="https://pixabay.com/de/videos/download/video-5364_medium.mp4">
+            </video>
+        </section>
+        <section id="pricing">
+
+        </section>
+        <section id="subscribe">
+            <form action="https://www.freecodecamp.com/email-submit" id="form">
+                <h1>You want to stay up to date?</h1>
+                <p> Then please subscribe to our newsletter </p>
+                <label for="email">Email</label>
+                <input type="email" id="email" placeholder="Email for the newsletter" name="email">
+                <input type="submit" value="Subscribe" id="submit">
+            </form>
+        </section>
+    </main>
+</div>
+</body>
+</html>
