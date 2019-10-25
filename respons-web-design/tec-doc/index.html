@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Technical Documentation</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<script src="https://cdn.freecodecamp.org/testable-projects-fcc/v1/bundle.js"></script>
+<div id="container">
+    <nav id="navbar">
+        <header>Google JavaScript Style Guide - Naming</header>
+        <a class="nav-link" href="#Rules_common_to_all_identifiers">Rules common to all identifiers</a>
+        <a class="nav-link" href="#Package_names">Package names</a>
+        <a class="nav-link" href="#Class_names">Class names</a>
+        <a class="nav-link" href="#Method_names">Method names</a>
+        <a class="nav-link" href="#Enum_names">Enum names</a>
+        <a class="nav-link" href="#Constant_names">Constant names</a>
+        <a class="nav-link" href="#Camel_case_defined">Camel case defined</a>
+    </nav>
+    <main id="main-doc">
+        <section id="Rules_common_to_all_identifiers" class="main-section">
+            <header>Rules common to all identifiers</header>
+            <p>
+                Identifiers use only ASCII letters and digits, and, in a small number of cases noted below,
+                underscores and very rarely (when required by frameworks like Angular) dollar signs.
+            </p>
+            <p>
+                Give as descriptive a name as possible, within reason.
+                Do not worry about saving horizontal space as it is far more important to make your code immediately
+                understandable by a new reader.
+                Do not use abbreviations that are ambiguous or unfamiliar to readers outside your project,
+                and do not abbreviate by deleting letters within a word.
+            </p>
+            <code>
+                errorCount // No abbreviation.
+                dnsConnectionIndex // Most people know what "DNS" stands for.
+                referrerUrl // Ditto for "URL".
+                customerId // "Id" is both ubiquitous and unlikely to be misunderstood.
+            </code>
+            <p>Disallowed</p>
+            <code>
+                n // Meaningless.
+                nErr // Ambiguous abbreviation.
+                nCompConns // Ambiguous abbreviation.
+                wgcConnections // Only your group knows what this stands for.
+                pcReader // Lots of things can be abbreviated "pc".
+                cstmrId // Deletes internal letters.
+                kSecondsPerDay // Do not use Hungarian notation.
+            </code>
+        </section>
+        <section id="Package_names" class="main-section">
+            <header>Package names</header>
+            <p>
+                Package names are all lowerCamelCase. For example, my.exampleCode.deepSpace, but not
+                <code>my.examplecode.deepspace</code> or <code>my.example_code.deep_space</code>.
+            </p>
+        </section>
+        <section id="Class_names" class="main-section">
+            <header>Class names</header>
+            <p>
+                Class, interface, record, and typedef names are written in UpperCamelCase.
+                Unexported classes are simply locals:
+                they are not marked @private and therefore are not named with a trailing underscore.
+            </p>
+            <p>
+                Type names are typically nouns or noun phrases.
+                For example, Request, ImmutableList, or VisibilityMode.
+                Additionally, interface names may sometimes be adjectives or adjective phrases instead (for example,
+                Readable).
+            </p>
+        </section>
+        <section id="Method_names" class="main-section">
+            <header>Method names</header>
+            <p>
+                Method names are written in lowerCamelCase. Names for @private methods must end with a trailing underscore.
+            </p>
+            <p>
+                Method names are typically verbs or verb phrases. For example, sendMessage or stop_. Getter and setter
+                methods for properties are never required, but if they are used they should be named getFoo (or optionally
+                isFoo or hasFoo for booleans), or setFoo(value) for setters.
+            </p>
+            <p>
+                Underscores may also appear in JsUnit test method names to separate logical components of the name. One
+                typical pattern is test <code>{MethodUnderTest}_{state}_{expectedOutcome}</code>, for example testPop_emptyStack_throws.
+                There is no One Correct Way to name test methods.
+            </p>
+        </section>
+        <section id="Enum_names" class="main-section">
+            <header>Enum names</header>
+            <p>
+                Enum names are written in UpperCamelCase, similar to classes, and should generally be singular nouns.
+                Individual items within the enum are named in CONSTANT_CASE.
+            </p>
+        </section>
+        <section id="Constant_names" class="main-section">
+            <header>Constant names</header>
+            <p>
+                Constant names use CONSTANT_CASE: all uppercase letters, with words separated by underscores.
+                There is no reason for a constant to be named with a trailing underscore,
+                since private static properties can be replaced by (implicitly private) module locals.
+            </p>
+            <p>
+                Every constant is a @const static property or a module-local const declaration,
+                but not all @const static properties and module-local consts are constants.
+                Before choosing constant case, consider whether the field really feels like a deeply immutable constant.
+                For example, if any of that instance's observable state can change,
+                it is almost certainly not a constant. Merely intending to never mutate the object is generally not enough.
+            </p>
+            <p>
+                Examples:
+            </p>
+            <code>
+                // Constants
+                const NUMBER = 5;
+                /** @const */ exports.NAMES = ImmutableList.of('Ed', 'Ann');
+                /** @enum */ exports.SomeEnum = { ENUM_CONSTANT: 'value' };
+
+                // Not constants
+                let letVariable = 'non-const';
+                class MyClass { constructor() { /** @const {string} */ this.nonStatic = 'non-static'; } };
+                /** @type {string} */ MyClass.staticButMutable = 'not @const, can be reassigned';
+                const /** Set&lt;string&gt; */ mutableCollection = new Set();
+                const /** ImmutableSet&lt;SomeMutableType&gt; */ mutableElements = ImmutableSet.of(mutable);
+                const Foo = goog.require('my.Foo'); // mirrors imported name
+                const logger = log.getLogger('loggers.are.not.immutable');
+            </code>
+            <p>
+                Constants’ names are typically nouns or noun phrases.
+            </p>
+        </section>
+        <section id="Camel_case_defined" class="main-section">
+            <header>Camel case defined</header>
+            <p>
+                Sometimes there is more than one reasonable way to convert an English phrase into camel case,
+                such as when acronyms or unusual constructs like IPv6 or iOS are present.
+                To improve predictability, Google Style specifies the following (nearly) deterministic scheme.
+            </p>
+            <p>
+                Beginning with the prose form of the name:
+            <ol>
+                <li>
+                    Convert the phrase to plain ASCII and remove any apostrophes. For example, Müller's algorithm might
+                    become Muellers algorithm.
+                </li>
+                <li>
+                    Divide this result into words, splitting on spaces and any remaining punctuation (typically hyphens).
+                    <ul>
+                        <li>
+                            Recommended: if any word already has a conventional camel case appearance in common usage,
+                            split this into its constituent parts (e.g., AdWords becomes ad words).
+                            Note that a word such as iOS is not really in camel case per se; it defies any convention,
+                            so this recommendation does not apply.
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    Now lowercase everything (including acronyms), then uppercase only the first character of:
+                    <ul>
+                        <li>… each word, to yield upper camel case, or</li>
+                        <li>… each word, to yield upper camel case, or</li>
+                    </ul>
+                </li>
+                <li>
+                    Finally, join all the words into a single identifier.
+                </li>
+            </ol>
+            </p>
+        </section>
+    </main>
+</div>
+</body>
+</html>
